@@ -7,7 +7,7 @@ pipeline {
 	    steps {
   	      withMaven(maven : 'maven 3.0.5'){
 
-		sh 'mvn clean compile'
+		sh 'ls -lhrt'
 
 
 		}
@@ -20,7 +20,7 @@ pipeline {
             steps {
               withMaven(maven : 'maven 3.0.5'){
 
-                sh 'mvn clean test'
+                sh 'mvn --version'
                 }
              }
 
@@ -31,7 +31,7 @@ pipeline {
             steps {
               withMaven(maven : 'maven 3.0.5'){
 
-                sh 'mvn deploy'
+                sh 'date'
                 }
              }
 
