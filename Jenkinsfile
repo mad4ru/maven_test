@@ -31,7 +31,7 @@ pipeline {
             steps {
               withMaven(maven : 'maven 3.0.5'){
 
-                sh 'mvn deloy'
+                sh 'mvn deploy'
                 }
              }
 
