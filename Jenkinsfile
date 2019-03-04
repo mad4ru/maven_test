@@ -1,32 +1,42 @@
 pipeline {
-    agent any
+	agent any
 
-    stages {
-        stage ('Compile Stage') {
+	stages {
+	  stage ('compile stage') {
+
+	    steps {
+  	      withMaven(maven : 'maven 3.0.5'){
+
+		sh 'mvn clean compile
+
+
+		}
+	     }
+
+	  }
+
+          stage ('Testing stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn clean compile'
-                }
-            }
-        }
+              withMaven(maven : 'maven 3.0.5'){
 
-        stage ('Testing Stage') {
+                sh 'mvn clean test'
+                }
+             }
+
+          }
+
+	 stage ('Deployment stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn test'
-                }
-            }
-        }
+              withMaven(maven : 'maven 3.0.5'){
 
-
-        stage ('Deployment Stage') {
-            steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn deploy'
+                sh 'mvn deloy'
                 }
-            }
-        }
-    }
+             }
+
+          }
+
+}
+
 }
